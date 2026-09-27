@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "com.chinaex123.sky_isle.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "client.CreateWorldScreenMixin"
+  ],
+  "mixins": [
+    "NetherFortressStructureMixin",
+    "EnderDragonFightMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
