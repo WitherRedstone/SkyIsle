@@ -1,4 +1,4 @@
-# 版本 0.3beta-mc26.2-neoforge
+# 版本 0.4beta-mc26.2-neoforge
 
-* 开发完成
+* 初步开发完成
 

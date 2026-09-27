@@ -120,7 +120,8 @@ public class SkyIsleEvents {
     private static void teleportToNetherSpawn(ServerPlayer player) {
         ServerLevel targetLevel = player.level().getServer().getLevel(Level.NETHER);
         if (targetLevel == null) return;
-        teleportToDimensionSpawn(player, targetLevel, SLConfig.NETHER_RESPAWN_STRUCTURE_NAME.get(), "the_nether");
+        teleportToDimensionSpawn(player, targetLevel, SLConfig.NETHER_POS_X.get(), SLConfig.NETHER_POS_Z.get(),
+                SLConfig.NETHER_RESPAWN_STRUCTURE_NAME.get(), "the_nether");
     }
 
     /**
@@ -131,7 +132,8 @@ public class SkyIsleEvents {
     private static void teleportToEndSpawn(ServerPlayer player) {
         ServerLevel targetLevel = player.level().getServer().getLevel(Level.END);
         if (targetLevel == null) return;
-        teleportToDimensionSpawn(player, targetLevel, SLConfig.END_RESPAWN_STRUCTURE_NAME.get(), "the_end");
+        teleportToDimensionSpawn(player, targetLevel, SLConfig.END_POS_X.get(), SLConfig.END_POS_Z.get(),
+                SLConfig.END_RESPAWN_STRUCTURE_NAME.get(), "the_end");
     }
 
     /**
@@ -145,15 +147,15 @@ public class SkyIsleEvents {
      * @param structureName 重生结构名称
      * @param dimension     维度目录名称
      */
-    private static void teleportToDimensionSpawn(ServerPlayer player, ServerLevel targetLevel, String structureName, String dimension) {
-        double centerX = 0.5;
-        double centerZ = 0.5;
+    private static void teleportToDimensionSpawn(ServerPlayer player, ServerLevel targetLevel, int posX, int posZ, String structureName, String dimension) {
+        double centerX = posX + 0.5;
+        double centerZ = posZ + 0.5;
 
         var template = StructureLoader.loadStructure(targetLevel, structureName, dimension);
         if (template.isPresent()) {
             Vec3i size = template.get().getSize();
-            centerX = (size.getX() - 1) / 2.0 + 0.5;
-            centerZ = (size.getZ() - 1) / 2.0 + 0.5;
+            centerX = posX + (size.getX() - 1) / 2.0 + 0.5;
+            centerZ = posZ + (size.getZ() - 1) / 2.0 + 0.5;
         }
 
         int spawnY = targetLevel.getHeight(Heightmap.Types.MOTION_BLOCKING, (int) centerX, (int) centerZ) + 1;

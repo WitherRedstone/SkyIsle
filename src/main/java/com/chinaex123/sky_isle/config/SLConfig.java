@@ -40,7 +40,7 @@ public class SLConfig {
         SPAWN_DIMENSION = builder
                 .comment("玩家重生的维度: overworld, the_nether 或 the_end")
                 .comment("Player respawn dimension: overworld, the_nether or the_end")
-                .define("respawnDimension", "overworld");
+                .define("respawnDimension", "the_end");
         NETHER_RESPAWN_STRUCTURE_NAME = builder
                 .comment(
                         "设置在下界重生时的结构文件名（不含.nbt后缀）",
@@ -129,8 +129,8 @@ public class SLConfig {
         builder.comment("末地").push("End");
         builder.comment("结构放置位置").push("Position");
         END_POS_X = builder
-                .comment("X坐标（末地外岛建议1000以上）")
-                .comment("X coordinate (1000+ recommended for End outer islands)")
+                .comment("X坐标")
+                .comment("X coordinate")
                 .defineInRange("x", 2500, Integer.MIN_VALUE, Integer.MAX_VALUE);
         END_POS_Y = builder
                 .comment("Y坐标")
