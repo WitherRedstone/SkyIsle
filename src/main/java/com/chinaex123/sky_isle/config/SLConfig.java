@@ -40,7 +40,7 @@ public class SLConfig {
         SPAWN_DIMENSION = builder
                 .comment("玩家重生的维度: overworld, the_nether 或 the_end")
                 .comment("Player respawn dimension: overworld, the_nether or the_end")
-                .define("respawnDimension", "the_end");
+                .define("respawnDimension", "overworld");
         NETHER_RESPAWN_STRUCTURE_NAME = builder
                 .comment(
                         "设置在下界重生时的结构文件名（不含.nbt后缀）",
